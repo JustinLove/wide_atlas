@@ -39,8 +39,10 @@ void main()
     vec2 halfScreenSize = screenSize.xy * 0.5;
     worldPos.xy = halfScreenSize + worldPos.xy * halfScreenSize;
 
+    float columns = 16;
+
     // offset by vert position and scale
-    float scale = posAndScale.w;
+    float scale = posAndScale.w / columns;
     vec2 quadpos = a_Position.xy - 0.5;
     vec2 offset = quadpos * scale;
     worldPos.xy += offset;
@@ -57,5 +59,13 @@ void main()
     // We're already in normalized clip space, so w is just 1.0.
     gl_Position = vec4(worldPos.x, worldPos.y, worldPos.z, 1.0);
 
-    v_TexCoord = vec2(a_TexCoord.x, vUVAndExtra.x + vUVAndExtra.y * (1.0 - a_TexCoord.y));
+    float index = round(vUVAndExtra.x/vUVAndExtra.y);
+    float column = mod(index, columns);
+    float row = floor(index/columns);
+    v_TexCoord = vec2(column + a_TexCoord.x, (row + (1.0 - a_TexCoord.y)) * vUVAndExtra.y) / columns;
+
+    //v_TexCoord = vec2(a_TexCoord.x, vUVAndExtra.x + vUVAndExtra.y * (1.0 - a_TexCoord.y));
+    //v_TexCoord = vec2(a_TexCoord.x/2, (1.0 - a_TexCoord.y)/2);
+    //v_TexCoord = a_TexCoord;
+    //v_TexCoord = vec2(row, vUVAndExtra.y);
 }

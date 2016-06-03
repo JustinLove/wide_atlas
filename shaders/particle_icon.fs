@@ -20,6 +20,7 @@ void main()
     vec4 texel = texture(Texture, v_TexCoord).bgra; // webkit texture is bgra
     if (v_ColorPrimary.w == 0.0)
         out_FragColor = texel;
+        //out_FragColor = vec4(v_TexCoord.x, 0.0, 0.0, 1.0);
     else
     {
         // horrible, horrible hack to work aground webkit png handling
@@ -39,5 +40,6 @@ void main()
         }
 
         out_FragColor = vec4(color, alpha * v_ColorPrimary.a);
+        //out_FragColor = vec4(v_TexCoord.y, 0.0, 0.0, 1.0);
     }
 }

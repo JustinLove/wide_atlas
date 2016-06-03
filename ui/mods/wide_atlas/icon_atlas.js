@@ -1,6 +1,6 @@
 (function() {
   var size = 52
-  var columns = 1
+  var columns = 16
   var pageWidth = size*columns
 
   $('#page').width(pageWidth)
