@@ -1,0 +1,20 @@
+{
+  "author": "wondible",
+  "build": "94684",
+  "category": ["titans"],
+  "context": "client",
+  "date": "2016/06/03",
+  "description": "Proof of concept for two-dimensional icon atlas",
+  "display_name": "Wide Atlas",
+  "forum": null,
+  "identifier": "com.wondible.pa.wide_atlas",
+  "priority": 100,
+  "scenes": {
+    "icon_atlas": [
+      "coui://ui/mods/wide_atlas/icon_atlas.css",
+      "coui://ui/mods/wide_atlas/icon_atlas.js"
+    ]
+  },
+  "signature": "not yet implemented",
+  "version": "0.1.0"
+}
